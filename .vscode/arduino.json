@@ -1,0 +1,8 @@
+{
+    "board": "esp8266:esp8266:nodemcuv2",
+    "configuration": "CpuFrequency=80,VTable=flash,FlashSize=4M1M,LwIPVariant=v2mss536,Debug=Disabled,DebugLevel=None____,FlashErase=none,UploadSpeed=115200",
+    "sketch": "useless-box.ino",
+    "port": "COM5",
+    "programmer": "AVRISP mkII",
+    "output": "../useless-box-build"
+}

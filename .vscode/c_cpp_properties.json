@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Arduino",
+            "includePath": [
+                "${env:USERPROFILE}\\Documents\\Arduino\\**",
+                "${env:LOCALAPPDATA}\\Arduino15\\packages\\esp8266\\tools\\**",
+                "${env:LOCALAPPDATA}\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**",
+                "${env:ProgramFiles(x86)}\\Arduino\\hardware\\tools\\avr\\avr\\include\\**",
+                "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\VC\\Linux\\include\\usr\\lib\\gcc\\x86_64-linux-gnu\\5\\include\\**",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "ARDUINO=188"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": []
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\balassy\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
+                "C:\\Users\\balassy\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**"
+            ],
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}

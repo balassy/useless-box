@@ -1,0 +1,15 @@
+{
+    "arduino.additionalUrls": [
+        "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json",
+        "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
+    ],
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 0, IndentCaseLabels: true, AllowShortCaseLabelsOnASingleLine: true }",
+    "files.associations": {
+      "array": "cpp",
+      "deque": "cpp",
+      "unordered_map": "cpp",
+      "vector": "cpp",
+      "initializer_list": "cpp",
+      "functional": "cpp"
+    }
+}
