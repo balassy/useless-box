@@ -4,11 +4,15 @@
 // Third-party libraries.
 
 // My classes.
+#include "speed-servo.h"
 
 #include "config.h"  // To store configuration and secrets.
 
+SpeedServo lidServo;
+
 void setup() {
   initSerial();
+  initServos();
 
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -22,17 +26,26 @@ void initSerial() {
   Serial.println("Initializing serial connection DONE.");
 }
 
+void initServos() {
+  lidServo.attach(PIN_LID_SERVO);
+}
+
 void loop() {
-  // turn the LED on (HIGH is the voltage level)
   digitalWrite(LED_BUILTIN, HIGH);
+  delay(2000);
 
-  // wait for a second
-  delay(1000);
+  lidServo.moveSlowTo(0);
 
-  // turn the LED off by making the voltage LOW
   digitalWrite(LED_BUILTIN, LOW);
+  delay(2000);
 
-   // wait for a second
-  delay(1000);
+  lidServo.moveSlowTo(180);
+
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(2000);
+
+  lidServo.moveSlowTo(90);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(2000);
 }
 
