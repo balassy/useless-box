@@ -1,21 +1,24 @@
 // Platform libraries.
-#include <Arduino.h>           // To add IntelliSense for platform constants.
+#include <Arduino.h>  // To add IntelliSense for platform constants.
 
 // Third-party libraries.
 
 // My classes.
 #include "speed-servo.h"
+#include "status-led.h"
 
 #include "config.h"  // To store configuration and secrets.
 
 SpeedServo lidServo;
 SpeedServo switchServo;
+StatusLed led;
+
+int lastState = 0;
 
 void setup() {
   initSerial();
   initServos();
-
-  pinMode(LED_BUILTIN, OUTPUT);
+  initLed();
 
   Serial.printf("Application version: %s\n", APP_VERSION);
   Serial.println("Setup completed.");
@@ -24,33 +27,52 @@ void setup() {
 void initSerial() {
   Serial.begin(115200);
   Serial.println();
+  pinMode(PIN_SWITCH, INPUT);
   Serial.println("Initializing serial connection DONE.");
 }
 
 void initServos() {
   lidServo.attach(PIN_LID_SERVO);
+  lidServo.moveFastTo(LID_START_POSITION);
+
   switchServo.attach(PIN_SWITCH_SERVO);
+  switchServo.moveFastTo(SWITCH_START_POSITION);
+}
+
+void initLed() {
+  led.setPin(LED_BUILTIN);
+  led.turnOff();
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  int buttonState = digitalRead(PIN_SWITCH);
 
-  lidServo.moveSlowTo(0);
-  switchServo.moveSlowTo(0);
+  if (buttonState != lastState) {
+    Serial.println("Switch changed");
 
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+    if (buttonState == HIGH) {
+      Serial.println("Opening...");
+      openLid();
+      switchServo.moveSlowTo(SWITCH_END_POSITION);
+    }
 
-  lidServo.moveSlowTo(180);
-  switchServo.moveSlowTo(180);
+    if (buttonState == LOW) {
+      Serial.println("Closing...");
+      switchServo.moveSlowTo(SWITCH_START_POSITION);
+      closeLid();
+    }
+  }
 
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  lastState = buttonState;
+}
 
-  lidServo.moveSlowTo(90);
-  switchServo.moveSlowTo(90);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+void openLid() {
+  led.turnOn();
+  lidServo.moveSlowTo(LID_END_POSITION);
+}
+
+void closeLid() {
+  lidServo.moveSlowTo(LID_START_POSITION);
+  led.turnOff();
 }
 
