@@ -19,6 +19,7 @@ void setup() {
   initSerial();
   initServos();
   initLed();
+  pinMode(PIN_SWITCH, INPUT);
 
   Serial.printf("Application version: %s\n", APP_VERSION);
   Serial.println("Setup completed.");
@@ -27,7 +28,6 @@ void setup() {
 void initSerial() {
   Serial.begin(115200);
   Serial.println();
-  pinMode(PIN_SWITCH, INPUT);
   Serial.println("Initializing serial connection DONE.");
 }
 
@@ -46,21 +46,12 @@ void initLed() {
 
 void loop() {
   int buttonState = digitalRead(PIN_SWITCH);
+  boolean isButtonTurnedOn = (buttonState != lastState) && (buttonState == HIGH);
 
-  if (buttonState != lastState) {
-    Serial.println("Switch changed");
-
-    if (buttonState == HIGH) {
-      Serial.println("Opening...");
-      openLid();
-      switchServo.moveSlowTo(SWITCH_END_POSITION);
-    }
-
-    if (buttonState == LOW) {
-      Serial.println("Closing...");
-      switchServo.moveSlowTo(SWITCH_START_POSITION);
-      closeLid();
-    }
+  if (isButtonTurnedOn) {
+    openLid();
+    flipSwitch();
+    closeLid();
   }
 
   lastState = buttonState;
@@ -76,3 +67,7 @@ void closeLid() {
   led.turnOff();
 }
 
+void flipSwitch() {
+  switchServo.moveSlowTo(SWITCH_END_POSITION);
+  switchServo.moveSlowTo(SWITCH_START_POSITION);
+}
