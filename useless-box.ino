@@ -13,7 +13,7 @@ SpeedServo lidServo;
 SpeedServo switchServo;
 StatusLed led;
 
-int lastState = 0;
+int lastSwitchState = 0;
 
 void setup() {
   initSerial();
@@ -45,16 +45,16 @@ void initLed() {
 }
 
 void loop() {
-  int buttonState = digitalRead(PIN_SWITCH);
-  boolean isButtonTurnedOn = (buttonState != lastState) && (buttonState == HIGH);
+  int switchState = digitalRead(PIN_SWITCH);
+  boolean isSwitchTurnedOn = (switchState != lastSwitchState) && (switchState == HIGH);
 
-  if (isButtonTurnedOn) {
+  if (isSwitchTurnedOn) {
     openLid();
     flipSwitch();
     closeLid();
   }
 
-  lastState = buttonState;
+  lastSwitchState = switchState;
 }
 
 void openLid() {
