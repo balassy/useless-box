@@ -9,6 +9,7 @@
 #include "config.h"  // To store configuration and secrets.
 
 SpeedServo lidServo;
+SpeedServo switchServo;
 
 void setup() {
   initSerial();
@@ -28,6 +29,7 @@ void initSerial() {
 
 void initServos() {
   lidServo.attach(PIN_LID_SERVO);
+  switchServo.attach(PIN_SWITCH_SERVO);
 }
 
 void loop() {
@@ -35,16 +37,19 @@ void loop() {
   delay(2000);
 
   lidServo.moveSlowTo(0);
+  switchServo.moveSlowTo(0);
 
   digitalWrite(LED_BUILTIN, LOW);
   delay(2000);
 
   lidServo.moveSlowTo(180);
+  switchServo.moveSlowTo(180);
 
   digitalWrite(LED_BUILTIN, HIGH);
   delay(2000);
 
   lidServo.moveSlowTo(90);
+  switchServo.moveSlowTo(90);
   digitalWrite(LED_BUILTIN, LOW);
   delay(2000);
 }
