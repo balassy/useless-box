@@ -14,6 +14,7 @@ SpeedServo switchServo;
 StatusLed led;
 
 int lastSwitchState = 0;
+long playCount = 0;
 
 void setup() {
   initSerial();
@@ -32,11 +33,11 @@ void initSerial() {
 }
 
 void initServos() {
-  lidServo.attach(PIN_LID_SERVO);
-  lidServo.moveFastTo(LID_START_POSITION);
+ lidServo.attach(PIN_LID_SERVO);
+ lidServo.moveNowTo(LID_START_POSITION);
 
   switchServo.attach(PIN_SWITCH_SERVO);
-  switchServo.moveFastTo(SWITCH_START_POSITION);
+  switchServo.moveNowTo(SWITCH_START_POSITION);
 }
 
 void initLed() {
@@ -46,28 +47,106 @@ void initLed() {
 
 void loop() {
   int switchState = digitalRead(PIN_SWITCH);
-  boolean isSwitchTurnedOn = (switchState != lastSwitchState) && (switchState == HIGH);
+  Serial.println(switchState);
+  boolean isSwitchTurnedOn = (switchState != lastSwitchState) && (switchState == LOW);
 
   if (isSwitchTurnedOn) {
-    openLid();
-    flipSwitch();
-    closeLid();
+    led.turnOn();
+    run();
+    led.turnOff();
   }
 
   lastSwitchState = switchState;
 }
 
-void openLid() {
-  led.turnOn();
+void run() {
+  switch (playCount % 7)
+  {
+    case 0:
+    case 1:
+    case 2:
+      runSlow();
+      break;
+    case 3:
+      runFast();
+      break;
+    case 4:
+      runFastWithDelay();
+      break;
+    case 5:
+      runClap();
+      break;
+    case 6:
+      runHalf();
+      break;
+    default:
+      break;
+  }
+
+  playCount++;
+}
+
+void runSlow() {
+  openLidSlow();
+  flipSwitchSlow();
+  closeLidSlow();
+}
+
+void runFast() {
+  flipSwitchFast();
+}
+
+void runFastWithDelay() {
+  openLidSlow();
+  delay(4000);
+  flipSwitchFast();
+  closeLidFast();
+}
+
+void runClap() {
+  clapLid();
+  clapLid();
+  clapLid();
+  clapLid();
+  openLidFast();
+  flipSwitchFast();
+  closeLidFast();
+}
+
+void runHalf() {
+  switchServo.moveSlowTo(SWITCH_HALF_POSITION);
+  delay(3000);
+  switchServo.moveFastTo(SWITCH_END_POSITION);
+  switchServo.moveFastTo(SWITCH_START_POSITION);
+}
+
+void openLidSlow() {
   lidServo.moveSlowTo(LID_END_POSITION);
 }
 
-void closeLid() {
-  lidServo.moveSlowTo(LID_START_POSITION);
-  led.turnOff();
+void openLidFast() {
+  lidServo.moveFastTo(LID_END_POSITION);
 }
 
-void flipSwitch() {
+void closeLidSlow() {
+  lidServo.moveSlowTo(LID_START_POSITION);
+}
+
+void closeLidFast() {
+  lidServo.moveFastTo(LID_START_POSITION);
+}
+
+void clapLid() {
+  openLidFast();
+  closeLidFast();
+}
+
+void flipSwitchSlow() {
   switchServo.moveSlowTo(SWITCH_END_POSITION);
   switchServo.moveSlowTo(SWITCH_START_POSITION);
+}
+
+void flipSwitchFast() {
+  switchServo.moveFastTo(SWITCH_END_POSITION);
+  switchServo.moveFastTo(SWITCH_START_POSITION);
 }
