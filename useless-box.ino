@@ -60,23 +60,22 @@ void loop() {
 }
 
 void run() {
-  switch (playCount % 7)
+  switch (playCount % 6)
   {
     case 0:
     case 1:
-    case 2:
       runSlow();
       break;
-    case 3:
+    case 2:
       runFast();
       break;
-    case 4:
+    case 3:
       runFastWithDelay();
       break;
-    case 5:
+    case 4:
       runClap();
       break;
-    case 6:
+    case 5:
       runHalf();
       break;
     default:
