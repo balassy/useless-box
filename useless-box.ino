@@ -60,22 +60,34 @@ void loop() {
 }
 
 void run() {
-  switch (playCount % 6)
+  switch (playCount % 10)
   {
     case 0:
     case 1:
       runSlow();
       break;
     case 2:
-      runFast();
+      runWaitThenFast();
       break;
     case 3:
-      runFastWithDelay();
+      runFast();
       break;
     case 4:
-      runClap();
+      runFastThenClap();
       break;
     case 5:
+      runOpenCloseThenFast();
+      break;
+    case 6:
+      runPeekThenFast();
+      break;
+    case 7:
+      runFastWithDelay();
+      break;
+    case 8:
+      runClap();
+      break;
+    case 9:
       runHalf();
       break;
     default:
@@ -91,7 +103,33 @@ void runSlow() {
   closeLidSlow();
 }
 
+void runWaitThenFast() {
+  delay(5000);
+  flipSwitchFast();
+}
+
 void runFast() {
+  flipSwitchFast();
+}
+
+void runFastThenClap() {
+  flipSwitchFast();
+  clapLid();
+}
+
+void runOpenCloseThenFast() {
+  openLidSlow();
+  delay(2000);
+  closeLidSlow();
+  delay(2000);
+  flipSwitchFast();
+}
+
+void runPeekThenFast() {
+  switchServo.moveSlowTo(SWITCH_HALF_POSITION);
+  delay(3000);
+  switchServo.moveFastTo(SWITCH_START_POSITION);
+  delay(3000);
   flipSwitchFast();
 }
 
