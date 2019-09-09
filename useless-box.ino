@@ -18,6 +18,7 @@ ProximitySensor sensor;
 int lastSwitchState = 0;
 long playCount = 0;
 bool isLidOpen = false;
+bool monitorSensor = false;
 
 void setup() {
   initSerial();
@@ -60,25 +61,26 @@ void loop() {
   if (isSwitchTurnedOn) {
     led.turnOn();
     run();
+    isLidOpen = false;
     led.turnOff();
+  } else {
+    // Check the proximity sensor.
+    if (sensor.isInRange()) {
+      if (!isLidOpen && monitorSensor) {
+        openLidFast();
+        isLidOpen = true;
+      }
+    } else {
+      if (isLidOpen) {
+        closeLidFast();
+        isLidOpen = false;
+      }
+    }
   }
 
   lastSwitchState = switchState;
 
-  // Check the proximity sensor.
-  if (sensor.isInRange()) {
-    if (!isLidOpen) {
-      openLidFast();
-      isLidOpen = true;
-    }
-  } else {
-    if (isLidOpen) {
-      closeLidFast();
-      isLidOpen = false;
-    }
-  }
-
-  // Wait 250 ms before next reading
+  // Wait 250 ms before next reading (required for the sensor).
   delay(250);
 }
 
@@ -96,18 +98,22 @@ void run() {
       break;
     case 4:
       runFastThenClap();
+      monitorSensor = true;
       break;
     case 5:
       runOpenCloseThenFast();
+      monitorSensor = false;
       break;
     case 6:
       runPeekThenFast();
       break;
     case 7:
       runFastWithDelay();
+      monitorSensor = true;
       break;
     case 8:
       runClap();
+      monitorSensor = false;
       break;
     case 9:
       runHalf();
