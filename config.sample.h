@@ -9,6 +9,7 @@ const int PIN_SWITCH_SERVO = D0;  // The number of the GPIO pin where the switch
 const int PIN_SWITCH = D5;        // The number of the GPIO pin where the switch is connected.
 const int PIN_SENSOR_SDA = D2;
 const int PIN_SENSOR_SCL = D1;
+const uint8_t SENSOR_TRIGGER_THRESHOLD = 100;
 
 const int LID_START_POSITION = 90;
 const int LID_END_POSITION = 40;

@@ -1,24 +1,22 @@
 // Platform libraries.
 #include <Arduino.h>  // To add IntelliSense for platform constants.
-#include <Wire.h>     // To read the gesture sensor via I2C.
 
 // Third-party libraries.
-#include "SparkFun_APDS9960_ESP8266.h"  // Gesture sensor utilities.
 
 // My classes.
 #include "speed-servo.h"
 #include "status-led.h"
+#include "proximity-sensor.h"
 
 #include "config.h"  // To store configuration and secrets.
 
 SpeedServo lidServo;
 SpeedServo switchServo;
 StatusLed led;
-SparkFun_APDS9960 sensor = SparkFun_APDS9960();
+ProximitySensor sensor;
 
 int lastSwitchState = 0;
 long playCount = 0;
-uint8_t proximity_data = 0;
 bool isLidOpen = false;
 
 void setup() {
@@ -52,36 +50,11 @@ void initLed() {
 }
 
 void initSensor() {
-  Serial.println(F("Initializing the sensor..."));
-
-  // Start the I2C.
-  Wire.begin(PIN_SENSOR_SDA, PIN_SENSOR_SCL);
-
-  // Initialize the sensor (configure I2C and initial values)
-  if (sensor.init()) {
-    Serial.println(F("Sensor initialization complete"));
-  } else {
-    Serial.println(F("Something went wrong during sensor init!"));
-  }
-
-  // Adjust the Proximity sensor gain
-  if (!sensor.setProximityGain(PGAIN_2X)) {
-    Serial.println(F("Something went wrong trying to set PGAIN"));
-  }
-
-  // Start running the APDS-9960 proximity sensor (no interrupts)
-  if (sensor.enableProximitySensor(false)) {
-    Serial.println(F("Proximity sensor is now running"));
-  } else {
-    Serial.println(F("Something went wrong during sensor init!"));
-  }
-
-  Serial.println(F("Initializing the sensor...DONE"));
+  sensor.attach(PIN_SENSOR_SDA, PIN_SENSOR_SCL, SENSOR_TRIGGER_THRESHOLD);
 }
 
 void loop() {
   int switchState = digitalRead(PIN_SWITCH);
-  Serial.println(switchState);
   boolean isSwitchTurnedOn = (switchState != lastSwitchState) && (switchState == LOW);
 
   if (isSwitchTurnedOn) {
@@ -92,23 +65,16 @@ void loop() {
 
   lastSwitchState = switchState;
 
-    // Read the proximity value
-  if ( !sensor.readProximity(proximity_data) ) {
-    Serial.println("Error reading proximity value");
+  // Check the proximity sensor.
+  if (sensor.isInRange()) {
+    if (!isLidOpen) {
+      openLidFast();
+      isLidOpen = true;
+    }
   } else {
-    Serial.print("Proximity: ");
-    Serial.println(proximity_data);
-
-    if (proximity_data > 100) {
-      if (!isLidOpen) {
-        openLidFast();
-        isLidOpen = true;
-      }
-    } else {
-      if (isLidOpen) {
-        closeLidFast();
-        isLidOpen = false;
-      }
+    if (isLidOpen) {
+      closeLidFast();
+      isLidOpen = false;
     }
   }
 
