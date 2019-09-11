@@ -10,15 +10,15 @@ The wiring is designed to create a custom shield for the Wemos D1 Mini ESP8266 m
 
 ### Schematics
 
-![](./wiring/Useless Box Shield v1 Schematic.png)
+![Schematic](./wiring/Useless-Box-Shield-v1-Schematic.png)
 
 ### PCB
 
-![](./wiring/Useless Box Shield v1 PCB.png)
+![PCB](./wiring/Useless-Box-Shield-v1-PCB.png)
 
-The PCB was designed with [Fritzing](https://fritzing.org), and you can [download the source file](./wiring/Useless Box Shield v1.fzz) to further customize it to your needs.
+The PCB was designed with [Fritzing](https://fritzing.org), and you can [download the source file](./wiring/Useless-Box-Shield-v1.fzz) to further customize it to your needs.
 
-You can also [download the Gerber files](./wiring/Useless Box Shield v1 PCB Gerber.zip) which you can use to order the PCB from your preferred PCB manufacturer. (Note: I've created my prototype manually then documented it in Fritzing, so I have not tested this PCB yet.)
+You can also [download the Gerber files](./wiring/Useless-Box-Shield-v1-PCB-Gerber.zip) which you can use to order the PCB from your preferred PCB manufacturer. (Note: I've created my prototype manually then documented it in Fritzing, so I have not tested this PCB yet.)
 
 
 ## The Box

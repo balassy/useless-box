@@ -8,7 +8,9 @@
                 "${env:LOCALAPPDATA}\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**",
                 "${env:ProgramFiles(x86)}\\Arduino\\hardware\\tools\\avr\\avr\\include\\**",
                 "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\VC\\Linux\\include\\usr\\lib\\gcc\\x86_64-linux-gnu\\5\\include\\**",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\Users\\balassy\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**",
+                "C:\\Users\\balassy\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**"
             ],
             "defines": [
                 "_DEBUG",
