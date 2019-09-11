@@ -27,6 +27,7 @@ The following hardware components are required to build this project:
 - Pin headers - to connect the shield to the Wemos D1 Mini.
 - Dupont cables or wires with connectors.
 - BluTack - to mount the wires and the controller board.
+- M3 screws - to mount the lids.
 
 
 ## Wiring
@@ -59,7 +60,7 @@ The responses of the box are implemented in the `useless-box.ino` file, and the 
 
 ## The Box
 
-I designed a custom box for this project which can be 3D printed or even further customized. You can download the model from ...
+I designed a custom box for this project which can be 3D printed or even further customized. You can download the model from https://www.thingiverse.com/thing:3856965.
 
 
 ## About the author
