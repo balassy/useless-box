@@ -1,13 +1,19 @@
 # Smart Useless Box with ESP8266 and Gesture Sensor
 
-A useless box made smarter with an ESP8266 microcontroller and an APDS-9660 proximity sensor to give more funny responses.
+A useless box made smarter with an ESP8266 microcontroller on a Wemos D1 Mini board and an APDS-9960 proximity sensor to give more funny responses.
 
+![Photo](./media/Useless-Box.jpg)
 
 ## YAUB (Yet Another Useless Box)?
 
 Useless machines are not new, there are many versions available. You can create a simple one using a lever switch, however that will react always the same way. Using a programmable microcontroller you can create **funny, unexpected responses**, and by adding a proximity sensor you can surprise the user with **actions before she would even turn on the switch**!
 
 This is a programmable useless box, so you have the option to implement **additional reactions** when you want to to further improve this funny little toy. What's more the used controller board has WiFi connectivity, so you can **connect it to other online services** (e.g. IFTTT) or **smart assistants** (Alexa, Cortana etc.).
+
+
+## Smart Useless Box in Action
+
+[![Smart Useless Box in Action](http://img.youtube.com/vi/x0kGetj1nt8/0.jpg)](http://www.youtube.com/watch?v=x0kGetj1nt8 "Smart Useless Box in Action")
 
 
 ## Hardware
