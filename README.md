@@ -13,7 +13,9 @@ This is a programmable useless box, so you have the option to implement **additi
 
 ## Smart Useless Box in Action
 
-[![Smart Useless Box in Action](http://img.youtube.com/vi/x0kGetj1nt8/0.jpg)](http://www.youtube.com/watch?v=x0kGetj1nt8 "Smart Useless Box in Action")
+Click the image below to see this box in action:
+
+[![Smart Useless Box in Action](./media/video-preview.png)](http://www.youtube.com/watch?v=x0kGetj1nt8 "Smart Useless Box in Action")
 
 
 ## Hardware
