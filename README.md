@@ -68,7 +68,9 @@ The responses of the box are implemented in the `useless-box.ino` file, and the 
 
 ## The Box
 
-I designed a custom box for this project which can be 3D printed or even further customized. You can download the model from https://www.thingiverse.com/thing:3856965.
+I designed a custom box for this project which can be 3D printed or even further customized. You can download the model from [Thingiverse](https://www.thingiverse.com/thing:3856965) or [MyMiniFactory](https://www.myminifactory.com/object/3d-print-100944).
+
+Happy Printing! :)
 
 
 ## About the author
