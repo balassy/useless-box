@@ -1,4 +1,46 @@
-# Smart Useless Box with ESP8266 and Gesture Sensor
+# Smart Useless Box with ESP8266 and Gesture Sensor modified
+
+This is a modification of the excellent Useless Box from balassy.
+
+The enclosure is the same but the software now has following additions.
+
+- Wifi support via WifiManager
+- SPIFFS support with filsing and uploads
+- Configuration via a file in SPIFFS
+- Software update via OTA web browser
+- Modfied schematic with an amplifier and loudspeaker to give speech responses
+- Audio output via a software DAC using ESP8266Audio library
+
+The SPIFFS config file controls
+- servo positions and speeds 
+- Actions are defined in the config file as sequences of base commands which control servo movements, delays, audio responses and sensor control
+- Sensor audio responses may be varied
+- Comments in the example config file list possible commands to be used in the sequences.
+- Sequences can either run one after another or can be selected at random.
+
+For my hardware I used an ESP-12F rather than the Wemos but that is a personal preference. The speaker in my case was a 21mm diameter but larger ones can be used.
+
+![Photo](./media/Useless-Box.jpg)
+
+![Schematic](./wiring/Schematic_UselessBox.jpg)
+
+[![Smart Useless Box in Action](./media/video-preview.png)](http://www.youtube.com/watch?v=x0kGetj1nt8 "Smart Useless Box in Action")
+
+##Set up Notes
+
+- Modify passwords for Wifimanager and firmware updates in uselessBox.ino
+- Compile and serial upload using Arduino ESP8266 IDE. Code / SPIFFS split needs to be 2MB/2MB to allow for OTA to work.
+- WifiManager will start an AP portal when first used to set local wifi parameters. After that it will hook into local network.
+- Browse to the device using its IPaddress/upload and upload from data director (edit.htm.gz, favicon.ico, graphs.js.gz). From then on IPaddress/edit may be used to manage SPIFFs content
+- Upload uselessConfig.txt, index.html, and .mp3 audio files to SPIFFs 
+- You can customise these as required. Audio files can be created using an online text to audio service like Notevibes.
+- Simple test of servos and audio may be done from base index page at IPaddress/edit
+- OTA updates may be done by exporting a compiled binary in Arduino IDE and then browsing to IPAddress/firmware
+
+
+The following is directly from balassy README
+
+## Smart Useless Box with ESP8266 and Gesture Sensor modified
 
 A useless box made smarter with an ESP8266 microcontroller on a Wemos D1 Mini board and an APDS-9960 proximity sensor to give more funny responses.
 
