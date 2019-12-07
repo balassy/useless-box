@@ -22,7 +22,7 @@ For my hardware I used an ESP-12F rather than the Wemos but that is a personal p
 
 ![Schematic](./wiring/Schematic_UselessBox.jpg)
 
-[![Smart Useless Box in Action](./media/Useless-Box1.jpg)](https://youtu.be/ker99iGVxNo "Smart Useless Box in Action")
+[![Smart Useless Box in Action](./media/Useless-Box1.jpg)](https://youtu.be/watch?v=ker99iGVxNo "Smart Useless Box in Action")
 
 ##Set up Notes
 
