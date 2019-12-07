@@ -20,7 +20,7 @@ The SPIFFS config file controls
 
 For my hardware I used an ESP-12F rather than the Wemos but that is a personal preference. The speaker in my case was a 21mm diameter but larger ones can be used.
 
-![Photo](./media/Useless-Box.jpg)
+![Photo](./media/Useless-Box1.jpg)
 
 ![Schematic](./wiring/Schematic_UselessBox.jpg)
 
