@@ -20,11 +20,9 @@ The SPIFFS config file controls
 
 For my hardware I used an ESP-12F rather than the Wemos but that is a personal preference. The speaker in my case was a 21mm diameter but larger ones can be used.
 
-![Photo](./media/Useless-Box1.jpg)
-
 ![Schematic](./wiring/Schematic_UselessBox.jpg)
 
-[![Smart Useless Box in Action](./media/video-preview.png)](http://www.youtube.com/watch?v=x0kGetj1nt8 "Smart Useless Box in Action")
+[![Smart Useless Box in Action](./media/Useless-Box1.jpg)](https://youtu.be/ker99iGVxNo "Smart Useless Box in Action")
 
 ##Set up Notes
 
