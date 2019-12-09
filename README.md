@@ -2,10 +2,12 @@
 
 This is a modification of the excellent Useless Box from balassy.
 
+https://github.com/balassy/useless-box
+
 The enclosure is the same but the software now has following additions.
 
 - Wifi support via WifiManager
-- SPIFFS support with filsing and uploads
+- SPIFFS support with filing and uploads
 - Configuration via a file in SPIFFS
 - Software update via OTA web browser
 - Modfied schematic with an amplifier and loudspeaker to give speech responses
@@ -18,7 +20,9 @@ The SPIFFS config file controls
 - Comments in the example config file list possible commands to be used in the sequences.
 - Sequences can either run one after another or can be selected at random.
 
-For my hardware I used an ESP-12F rather than the Wemos but that is a personal preference. The speaker in my case was a 21mm diameter but larger ones can be used.
+For my hardware I used an ESP-12F rather than the Wemos but that is a personal preference.
+The speaker in my case was a 21mm diameter but larger ones can be used.
+I made the switch a bit easier to toggle by taking 1mm off the internal spindle to reduce spring tension.
 
 ![Schematic](./wiring/Schematic_UselessBox.jpg)
 
