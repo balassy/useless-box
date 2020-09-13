@@ -29,8 +29,8 @@ I made the switch a bit easier to toggle by taking 1mm off the internal spindle 
 [![Smart Useless Box in Action](./media/Useless-Box1Preview.jpg)](https://youtu.be/ker99iGVxNo "Smart Useless Box in Action")
 
 ##Set up Notes
-
-- Modify passwords for Wifimanager and firmware updates in uselessBox.ino
+- Use BaseSupprt library at https://github.com/roberttidey/BaseSupport
+- Modify passwords for Wifimanager and firmware updates in BasicConfig.h.ino
 - Compile and serial upload using Arduino ESP8266 IDE. Code / SPIFFS split needs to be 2MB/2MB to allow for OTA to work.
 - WifiManager will start an AP portal when first used to set local wifi parameters. After that it will hook into local network.
 - Browse to the device using its IPaddress/upload and upload from data director (edit.htm.gz, favicon.ico, graphs.js.gz). From then on IPaddress/edit may be used to manage SPIFFs content
