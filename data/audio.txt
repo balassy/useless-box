@@ -1,0 +1,16 @@
+00 a-round-of-applause-for-trying-again1574765538
+01 back-and-forth-back-and-forth-never1574765904
+02 cant-quite-make-it-lets-try-again1574765609
+03 cant-you-read-the-instructions1574765146
+04 i-am-getting-bored-with-this1574765806
+05 i-said-i-was-useless1574764811
+06 i-told-you-not-to1574764680
+07 my-arm-is-getting-tired1574765448
+08 slow-slow-quick-quick-slow1574765781
+09 you-are-wasting-your-time-here1574765348
+10 you-did-it-again
+11 This is fun. Not.
+12 Here we go again.
+
+
+sensor Naughty. Naughty.

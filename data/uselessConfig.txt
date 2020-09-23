@@ -1,0 +1,38 @@
+#Config file for weather / train access
+# lines are 
+#host;switchStart;switchHalf;switchEnd;switchFast;switchSlow;lidStart;lidEnd;lidSlow;lidFast
+#sensorTriggerThreshold (0= no sensor)
+#mode (0=sequence, 1=random)
+#audioGain (0-39)
+#modeLines made up following actions
+#SS switch start slow;SF witch start fast;HS switch half slow;HF switch half fast;ES switch end slow;EF switch end fast
+#CS lid close slow;CF lid close fast;OS lid open slow;OF lid open fast
+#XSSPPP switch move to PPP with speed factor SS
+#YSSPPP lid move to PPP with speed factor SS
+#M0 proximity monitor off;M1 proximity monitor on
+#P0 mode to sequential;P1 mode to random
+#Afilename play audio from filename
+esp8266-useless
+0
+90
+118
+5
+15
+90
+50
+5
+15
+190
+0
+25
+OS,A05,ES,SS,CS
+OS,A06,ES,SS,CS,M0
+D5000,OF,A10,EF,SF,CF
+OF,A03,EF,SF,CF
+OF,A09,EF,SF,CF,OF,CF,M1
+OS,A04,D2000,CS,D2000,OF,EF,SF,CF,M0
+OF,HS,A02,D3000,SS,D3000,EF,SF,CF
+OS,A01,D4000,EF,SF,CF,M0
+OF,A00,CF,OF,CF,OF,CF,OF,CF,OF,EF,SF,CF,M2
+OF,HS,A07,D3000,EF,SF,CS,M0
+OS,A08,HS,EF,SF,CS,P1
