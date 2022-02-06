@@ -3,7 +3,7 @@
 void ProximitySensor::attach(uint8_t sdaPin, uint8_t sclPin, uint8_t rangeThreshold) {
   Serial.println(F("ProximitySensor: Initializing..."));
 
-  _sensor = SparkFun_APDS9960();
+  _sensor = APDS9930();
 
   Serial.println(F("ProximitySensor: Starting I2C..."));
   Wire.begin(sdaPin, sclPin);

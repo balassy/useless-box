@@ -1,6 +1,8 @@
 #include <Arduino.h>                    // To add IntelliSense for platform constants.
 #include <Wire.h>                       // To read the gesture sensor via I2C.
-#include "SparkFun_APDS9960_ESP8266.h"  // Third-party library with gesture sensor utilities.
+//#include "SparkFun_APDS9960_ESP8266.h"  // Third-party library with gesture sensor utilities.
+#include <APDS9930.h>
+
 
 #ifndef proximity_sensor_h
 #define proximity_sensor_h
@@ -12,8 +14,8 @@ class ProximitySensor {
     bool isInRange();
 
   private:
-    SparkFun_APDS9960 _sensor;
-    uint8_t _lastProximityValue;
+    APDS9930 _sensor;
+    uint16_t _lastProximityValue;
     uint8_t _rangeThreshold;
 };
 
